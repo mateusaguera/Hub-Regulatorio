@@ -16,17 +16,15 @@ Para garantir a precisão cirúrgica do modelo e evitar alucinações jurídicas
 * [RN_465_Anexo_I_Rol_Procedimentos.pdf](./RN_465_Anexo_I_Rol_Procedimentos.pdf)
 * [RN_465_Anexo_II_Diretrizes_Utilizacao.pdf](./RN_465_Anexo_II_Diretrizes_Utilizacao.pdf) (DUTs)
 * [RN_469_Sessoes_Ilimitadas_Tea.pdf](./RN_469_Sessoes_Ilimitadas_Tea.pdf) (Regras Específicas)
-* [Diretrizes_Obrigatorias.txt](./Diretrizes_Obrigatorias.txt) (System Prompt e Regras de Atuação)
 
 ## 3. Engenharia de Prompts e "Cicatrizes"
 Durante a construção e calibragem deste "segundo cérebro", algumas rotas precisaram ser recalculadas para garantir a velocidade e o tom adequado da IA. As principais "cicatrizes" e aprendizados envolveram:
 
 * **O Paradoxo do Escopo (Menos é Mais):** A intenção inicial era incluir normas macro do setor, como a RN 518 (Governança e Riscos) e a RN 509 (Ouvidoria). No entanto, percebeu-se que para um MVP focado em resolução técnica de litígios operacionais, injetar regras amplas de auditoria distraía o modelo. **A Solução:** Enxugar a base de conhecimento estritamente para as normativas de cobertura e prazos.
 * **O Viés de "Advogado" e os Gatilhos de Prompt:** Ao analisar termos como "hospital", a IA tendia a acionar princípios de defesa do consumidor. **A Solução:** Foi necessário aplicar um "choque de compliance" no prompt, proibindo a recomendação de estratégias de defesa e alterando o termo "risco jurídico" para "exposição regulatória".
-* **A Trava de Comportamento (System Prompt em Texto):** Para garantir que a IA não fugisse do escopo sob nenhuma hipótese durante as interações, apenas instruir pelo chat não era suficiente. **A Solução:** Foi criado um arquivo de texto específico (upload na base) contendo as **Diretrizes Obrigatórias** de funcionamento, estabelecendo as seguintes regras de ouro:
-  1. Comportar-se exclusivamente como um segundo cérebro para o analista regulatório (ANS) visando reduzir judicialização.
-  2. Sob hipótese alguma inventar dados. Se a resposta não estiver na base, responder até onde for possível embasar, parar e solicitar atualização do conteúdo.
-  3. Registrar qualquer correção feita pelo usuário e convertê-la em uma nova regra definitiva no final do arquivo.
+* **A Trava de Comportamento (System Prompt em Texto):** Para garantir que a IA não fugisse do escopo sob nenhuma hipótese durante as interações, apenas instruir pelo chat não era suficiente. **A Solução:** Foi criado uma fonte  de texto específica contendo as **Diretrizes Obrigatórias** de funcionamento, estabelecendo as seguintes regras de ouro:
+
+>"Crie um arquivo de regras e anote. Estas são suas diretrizes de funcionamento: 1. Comporte-se como um segundo cérebro para trabalhar em conjunto com um analista regulatório (ANS) de uma operadora de planos de saúde a fim de identificar e reduzir gatilhos de judicialização. 2. Sob hipótese alguma invente informações ou dados, caso em determinado momento eu te faça uma pergunta em que você não encontre a resposta claramente formulada em sua base de dados, responda até onde conseguir embasar nas fontes e pare imediatamente para informar que ainda não foi treinado para esse assunto e informe a necessidade de atualização do conteúdo específico. 3. Toda vez que eu te corrigir, anota essa correção e crie uma nova regra no final do arquivo."
 
 ## 4. Miniguia de Estudo e Ferramentas (Entrega Final)
 
@@ -42,8 +40,15 @@ Abaixo, os três esqueletos de prompts desenvolvidos para orquestrar a operaçã
 **C. Prompt de Estruturação Documental**
 > "Extraia estritamente os 20 termos técnicos mais críticos para a operação contidos na base de dados e apresente no seguinte formato: Nome do Termo; Conceito Regulatório; Fonte (Artigo/RN)."
 
+**🤖 Documento Gerado pela IA:**
+* 📄 [Acessar o Relatório de Plano de Ação (PDF)](./Relatorio_Plano_De_Acao.pdf)
+
 ### 4.2. Glossário GRC Oficial
-*[Espaço reservado para colar o resultado da extração dos 20 termos gerados pelo modelo]*
+*[Espaço reservado para colar o resultado da extração dos 20 termos gerados pelo modelo]* 
 
 ### 4.3. Resumo Estruturado
 *[Espaço reservado para colar o resumo estruturado gerado pelo modelo focado nos impactos operacionais das resoluções]*
+
+*(Nota de Transparência: O relatório completo e o glossário acima foram gerados nativamente pela IA dentro do ambiente do NotebookLM e exportado em formato PDF via Google Docs para preservação da formatação, facilidade de compartilhamento e  consulta direta neste repositório. Ressaltando que apenas o Resumo Estrurutado foi gerado diretamente em PDF pelo Notebook, conforme direcionado pelo prompt).*
+
+
