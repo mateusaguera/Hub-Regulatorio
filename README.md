@@ -1,5 +1,7 @@
 # Hub-Regulatorio: Segundo Cérebro de Auditoria ANS 🧠
 
+[🔗 Acessar o Ambiente do Segundo Cérebro no NotebookLM](https://notebook.google.com/notebook/1c5a4248-d510-4430-a411-659f74caa90f?authuser=1)
+
 ## 1. Contexto e Objetivos
 O objetivo deste projeto é construir um "segundo cérebro" utilizando Inteligência Artificial (NotebookLM) para atuar em conjunto com um Analista Regulatório e de Compliance interno de uma operadora de planos de saúde. 
 
@@ -15,8 +17,14 @@ Para garantir a precisão cirúrgica do modelo e evitar alucinações jurídicas
 * `RN_469_Sessoes_Ilimitadas_Tea.pdf` (Regras Específicas)
 
 ## 3. Engenharia de Prompts e "Cicatrizes"
-Durante a calibragem da IA, um dos maiores desafios técnicos (cicatrizes) foi o viés natural do LLM em atuar de forma passional. Ao analisar termos como "hospital" e "dor", a IA tendia a acionar princípios do Código de Defesa do Consumidor e agir como um advogado de defesa do paciente, fugindo do escopo do projeto.
-* **A Solução:** Foi necessário refinar a engenharia de prompt impondo uma "trava de compliance". O comando mestre foi ajustado para exigir uma análise fria sob a ótica de **controle interno da operadora**, substituindo termos genéricos como "risco jurídico" por "exposição regulatória", obrigando o modelo a se ater exclusivamente às resoluções anexadas.
+Durante a construção e calibragem deste "segundo cérebro", algumas rotas precisaram ser recalculadas para garantir a velocidade e o tom adequado da IA. As principais "cicatrizes" e aprendizados envolveram:
+
+* **O Paradoxo do Escopo (Menos é Mais):** A intenção inicial era incluir normas macro do setor, como a RN 518 (Governança e Riscos) e a RN 509 (Ouvidoria). No entanto, percebeu-se que para um MVP focado em resolução técnica de litígios operacionais, injetar regras amplas de auditoria distraía o modelo. **A Solução:** Enxugar a base de conhecimento estritamente para as normativas de cobertura e prazos.
+* **O Viés de "Advogado" e os Gatilhos de Prompt:** Ao analisar termos como "hospital", a IA tendia a acionar princípios de defesa do consumidor. **A Solução:** Foi necessário aplicar um "choque de compliance" no prompt, proibindo a recomendação de estratégias de defesa e alterando o termo "risco jurídico" para "exposição regulatória".
+* **A Trava de Comportamento (System Prompt em Texto):** Para garantir que a IA não fugisse do escopo sob nenhuma hipótese durante as interações, apenas instruir pelo chat não era suficiente. **A Solução:** Foi criado um arquivo de texto específico (upload na base) contendo as **Diretrizes Obrigatórias** de funcionamento, estabelecendo as seguintes regras de ouro:
+  1. Comportar-se exclusivamente como um segundo cérebro para o analista regulatório (ANS) visando reduzir judicialização.
+  2. Sob hipótese alguma inventar dados. Se a resposta não estiver na base, responder até onde for possível embasar, parar e solicitar atualização do conteúdo.
+  3. Registrar qualquer correção feita pelo usuário e convertê-la em uma nova regra definitiva no final do arquivo.
 
 ## 4. Miniguia de Estudo e Ferramentas (Entrega Final)
 
@@ -27,7 +35,7 @@ Abaixo, os três esqueletos de prompts desenvolvidos para orquestrar a operaçã
 > "Sua tarefa é analisar o relato abaixo estritamente sob a ótica de um Analista Regulatório e de Compliance interno da operadora de saúde. Sua análise deve ser fria, técnica e focada na auditoria de processos operacionais para mitigação de passivos. É terminantemente proibido atuar como advogado de defesa do consumidor. Limite-se a classificar a falha operacional e a exposição da operadora perante a ANS. Gere a saída no formato: Fato Gerador da Anomalia; Violação Regulatória (ANS); Exposição Regulatória."
 
 **B. Prompt de Validação Ágil (Bate-Pronto)**
-> "Responda à pergunta a seguir com 'Sim', 'Não' ou 'Depende', baseando-se estritamente na Lei 9.656 e nas normativas da ANS anexadas. Em seguida, cite a regra exata e justifique em apenas uma frase curta, sem usar informações externas."
+> "Responda à pergunta a seguir com 'Sim', 'Não' ou 'Depende', baseando-se estritamente na Lei 9.656 e nas normativas da ANS anexadas. Em seguida, cite a regra exata e justifique em apenas uma frase curta, sem usar informações externas: **[SUA PERGUNTA AQUI]**"
 
 **C. Prompt de Estruturação Documental**
 > "Extraia estritamente os 20 termos técnicos mais críticos para a operação contidos na base de dados e apresente no seguinte formato: Nome do Termo; Conceito Regulatório; Fonte (Artigo/RN)."
