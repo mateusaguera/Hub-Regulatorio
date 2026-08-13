@@ -9,12 +9,14 @@ A ferramenta foi desenhada para realizar a triagem ágil de reclamações de ben
 
 ## 2. Curadoria de Fontes
 Para garantir a precisão cirúrgica do modelo e evitar alucinações jurídicas, a base de conhecimento foi restrita exclusivamente a documentos oficiais e higienizados:
-* `Lei_9656_Planos_De_Saude.pdf` (Regra Geral do Setor)
-* `RN_566_Prazos_De_Atendimento.pdf` (Prazos Máximos)
-* `RN_465_Rol_Procedimentos_Inteiro_Teor.pdf` (Coberturas Obrigatórias)
-* `RN_465_Anexo_I_Rol_Procedimentos.pdf`
-* `RN_465_Anexo_II_Diretrizes_Utilizacao.pdf` (DUTs)
-* `RN_469_Sessoes_Ilimitadas_Tea.pdf` (Regras Específicas)
+
+* [Lei_9656_Planos_De_Saude.pdf](./Lei_9656_Planos_De_Saude.pdf) (Regra Geral do Setor)
+* [RN_566_Prazos_De_Atendimento.pdf](./RN_566_Prazos_De_Atendimento.pdf) (Prazos Máximos)
+* [RN_465_Rol_Procedimentos_Inteiro_Teor.pdf](./RN_465_Rol_Procedimentos_Inteiro_Teor.pdf) (Coberturas Obrigatórias)
+* [RN_465_Anexo_I_Rol_Procedimentos.pdf](./RN_465_Anexo_I_Rol_Procedimentos.pdf)
+* [RN_465_Anexo_II_Diretrizes_Utilizacao.pdf](./RN_465_Anexo_II_Diretrizes_Utilizacao.pdf) (DUTs)
+* [RN_469_Sessoes_Ilimitadas_Tea.pdf](./RN_469_Sessoes_Ilimitadas_Tea.pdf) (Regras Específicas)
+* [Diretrizes_Obrigatorias.txt](./Diretrizes_Obrigatorias.txt) (System Prompt e Regras de Atuação)
 
 ## 3. Engenharia de Prompts e "Cicatrizes"
 Durante a construção e calibragem deste "segundo cérebro", algumas rotas precisaram ser recalculadas para garantir a velocidade e o tom adequado da IA. As principais "cicatrizes" e aprendizados envolveram:
