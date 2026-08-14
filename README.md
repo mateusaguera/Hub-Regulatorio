@@ -22,9 +22,12 @@ Durante a construção e calibragem deste "segundo cérebro", algumas rotas prec
 
 * **O Paradoxo do Escopo (Menos é Mais):** A intenção inicial era incluir normas macro do setor, como a RN 518 (Governança e Riscos) e a RN 509 (Ouvidoria). No entanto, percebeu-se que para um MVP focado em resolução técnica de litígios operacionais, injetar regras amplas de auditoria distraía o modelo. **A Solução:** Enxugar a base de conhecimento estritamente para as normativas de cobertura e prazos.
 * **O Viés de "Advogado" e os Gatilhos de Prompt:** Ao analisar termos como "hospital", a IA tendia a acionar princípios de defesa do consumidor. **A Solução:** Foi necessário aplicar um "choque de compliance" no prompt, proibindo a recomendação de estratégias de defesa e alterando o termo "risco jurídico" para "exposição regulatória".
+* **Limitações de Exportação e Formatação (O Teste do Glossário):** Ao tentar gerar um glossário estruturado, realizei testes com três variações de prompts para mapear as limitações da IA na exportação de dados. Na primeira tentativa, o modelo gerou uma tabela com excelente qualidade de conteúdo, porém a formatação se desconfigurou no momento da exportação. O segundo prompt, solicitando a saída em Markdown, entregou um ótimo equilíbrio entre rigor técnico e apresentação visual apenas dentro do ambiente do NotebookLM, pois ao tentar exportar, o arquivo também não manteve a estrutura. Já no terceiro teste, ao forçar o modelo a priorizar a otimização para exportação, houve uma degradação de desempenho: a IA perdeu a precisão analítica, extraiu termos irrelevantes e a formatação externa continuou inadequada. A Solução: Descartei a terceira abordagem, optando por abrir mão de uma exportação com formatação perfeita em favor de garantir a máxima qualidade técnica e a precisão dos dados extraídos pela ferramenta. Assim, mantive as duas primeiras versões, categorizando o material do primeiro teste como "Léxico" e o do segundo como "Glossário GRC", assumindo que o consumo ideal da formatação ocorre dentro da própria plataforma.
 * **A Trava de Comportamento (System Prompt em Texto):** Para garantir que a IA não fugisse do escopo sob nenhuma hipótese durante as interações, apenas instruir pelo chat não era suficiente. **A Solução:** Foi criado uma fonte  de texto específica contendo as **Diretrizes Obrigatórias** de funcionamento, estabelecendo as seguintes regras de ouro:
 
 >"Crie um arquivo de regras e anote. Estas são suas diretrizes de funcionamento: 1. Comporte-se como um segundo cérebro para trabalhar em conjunto com um analista regulatório (ANS) de uma operadora de planos de saúde a fim de identificar e reduzir gatilhos de judicialização. 2. Sob hipótese alguma invente informações ou dados, caso em determinado momento eu te faça uma pergunta em que você não encontre a resposta claramente formulada em sua base de dados, responda até onde conseguir embasar nas fontes e pare imediatamente para informar que ainda não foi treinado para esse assunto e informe a necessidade de atualização do conteúdo específico. 3. Toda vez que eu te corrigir, anota essa correção e crie uma nova regra no final do arquivo."
+
+> 🛡️ **Nota de Compliance:** Nos testes de caso prático da ferramenta, a informação utilizada foi retirada de uma reclamação pública no portal Reclame Aqui. Visando as práticas de sigilo, o link original não foi incluído e os dados foram anonimizados para não expor a seguradora em questão.
 
 ## 4. Miniguia de Estudo e Ferramentas (Entrega Final)
 
@@ -44,11 +47,26 @@ Abaixo, os três esqueletos de prompts desenvolvidos para orquestrar a operaçã
 * 📄 [Acessar o Relatório de Plano de Ação (PDF)](./Relatorio_Plano_De_Acao.pdf)
 
 ### 4.2. Glossário GRC Oficial
+Para gerar a tabela do glossário executivo, foi utilizada a função de gerar tabela baseada no seguinte prompt:
+
+> "Atue como um analista regulatório especializado em GRC e Saúde Suplementar e varra a nossa base de dados - Lei 9566/98, RNs 465 (Anexos I e II e inteiro teor), 469 e 566 - e extraia os termos técnicos mais criticos da operação.
+> 
+> A definição do termo não pode ser de dicionário comum; deve ser a exta definição dada pela ANS nos documentos E se a noma não definir os termos claramente, não inclua-o.
+> 
+> Extraia no mínimo 20 termos e retorne em uma tabela no seguinte formato:
+> 
+> Nome do Termo:
+> 
+> Conceito regulatório (a definição exata da ANS)
+> 
+> Fonte (Qual seu embasamento).
+> 
+> Ao final consolide estes conceitos em um glossário executivo regulatório, agrupando as principais regras de carência e limites de cobertura para servir de material de integração rápida para novos analistas e operadores de regulação da nossa equipe. Retornando sua resposta em uma  tabela formatada em Markdown para que ao exportar para o Google Planilhas, mantenha coma formatação corporativa. "
+
 *[Espaço reservado para colar o resultado da extração dos 20 termos gerados pelo modelo]* 
 
 ### 4.3. Resumo Estruturado
 *[Espaço reservado para colar o resumo estruturado gerado pelo modelo focado nos impactos operacionais das resoluções]*
 
 *(Nota de Transparência: O relatório completo e o glossário acima foram gerados nativamente pela IA dentro do ambiente do NotebookLM e exportado em formato PDF via Google Docs para preservação da formatação, facilidade de compartilhamento e  consulta direta neste repositório. Ressaltando que apenas o Resumo Estrurutado foi gerado diretamente em PDF pelo Notebook, conforme direcionado pelo prompt).*
-
 
