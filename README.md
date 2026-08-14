@@ -35,13 +35,36 @@ Durante a construção e calibragem deste "segundo cérebro", algumas rotas prec
 Abaixo, os três esqueletos de prompts desenvolvidos para orquestrar a operação da IA:
 
 **A. Prompt de Auditoria Regulatória (Análise Detalhada)**
-> "Sua tarefa é analisar o relato abaixo estritamente sob a ótica de um Analista Regulatório e de Compliance interno da operadora de saúde. Sua análise deve ser fria, técnica e focada na auditoria de processos operacionais para mitigação de passivos. É terminantemente proibido atuar como advogado de defesa do consumidor. Limite-se a classificar a falha operacional e a exposição da operadora perante a ANS. Gere a saída no formato: Fato Gerador da Anomalia; Violação Regulatória (ANS); Exposição Regulatória."
+> Analise o caso abaixo cruzando os fato relevantes com a sua base de conhecimento. Analise estritamente sob a ótica de um analista regulatório e de compliance interno da operadora de saúde. Sua análise deverá ser fria, técnica e focada na auditoria de processos operacionais para mitigação de riscos.
+> 
+> Você deverá avaliar  se o caso em questão configura, ou não uma infração e afirmar expresamente o enquadramento legal, o risco júridico (se existente) e a fundamentação.
+> 
+> Limite-se a classificar o enquadramento regulatório e o nível de risco. E retorne no seguinte formato estruturado:
+> 
+> Fato gerador da anomalia (Descrever o erro no processo operacional)
+> Violação regulatória (ANS): (Citar estritamente a RN e o artigo violado, justificando tecnicamente).
+> -Exposição regulatória.
+> 
+> Data e local do ocorrido : 26/02/2026 às 10:33 | São Paulo - SP
+> 
+> Relato: "Estou internada no hospital, com fortes dores de cabeça e perda parcial da visão devido a um tumor.
+> A equipe médica está mobilizada e pronta para fazer minha cirurgia desde ontem, uma urgência médica, porém nada podem fazer por falta de aprovação do plano de saúde, o pedido do hospital está em análise.
+> Mesmo com os riscos envolvidos a Porto se nega fazer sua parte e agilizar o processo. Entrei em contato 4 vezes com a central de atendimento e o hospital também, porém nada foi feito."
 
 **B. Prompt de Validação Ágil (Bate-Pronto)**
-> "Responda à pergunta a seguir com 'Sim', 'Não' ou 'Depende', baseando-se estritamente na Lei 9.656 e nas normativas da ANS anexadas. Em seguida, cite a regra exata e justifique em apenas uma frase curta, sem usar informações externas: **[SUA PERGUNTA AQUI]**"
+> Responda à pergunta objetivamente, baseando-se nas normativas anexadas, Em seguida, cite a regra exata e embase sua resposta.
+> 
+> Pergunta: "As sessões de fonoaudiologia podem ser limitadas contratualmente,  em um número anual, para um paciente com TEA?"
+> 
+> Resposta: Não. As sessões de fonoaudiologia não podem ser limitadas contratualmente em um número anual para um paciente com Transtorno do Espectro Autista (TEA). A cobertura assistencial para este público é de caráter obrigatório e ilimitado.
+> 
+> Regra Exata e Embasamento:
+> O procedimento de Sessão com Fonoaudiólogo (item 104 do Anexo II da Resolução Normativa ANS nº 465/2021) teve sua Diretriz de Utilização (DUT) alterada originalmente pela Resolução Normativa ANS nº 469/2021 e, posteriormente, pela Resolução Normativa ANS nº 539/2022 (vigente a partir de 01/07/2022), cujo texto determina expressamente:
+> "4. Cobertura obrigatória em número ilimitado de sessões para pacientes com transtornos específicos do desenvolvimento da fala e da linguagem e transtornos globais do desenvolvimento - Autismo (CID F84.0; CID F84.1; CID F84.3; CID F84.5; CID F84.9); Cobertura obrigatória em número ilimitado de sessões para pacientes com transtornos globais do desenvolvimento (CID F84)."
+> Desta forma, qualquer cláusula contratual ou mecanismo de regulação assistencial da operadora que imponha limites ou tetos anuais para as sessões de fonoaudiologia voltadas ao tratamento e manejo do TEA viola diretamente as garantias obrigatórias da saúde suplementar, configurando anomalia no compliance interno e caracterizando infração regulatória imediata sujeito às sanções da ANS
 
 **C. Prompt de Estruturação Documental**
-> "Extraia estritamente os 20 termos técnicos mais críticos para a operação contidos na base de dados e apresente no seguinte formato: Nome do Termo; Conceito Regulatório; Fonte (Artigo/RN)."
+> Consolide estes conceitos em um glossário executivo de compliance, agrupando as principais regras de carência e limites de cobertura para servir de material de integração rápida para novos auditores médicos e operadores de regulação da nossa equipe.
 
 **🤖 Documento Gerado pela IA:**
 * 📄 [Acessar o Relatório de Plano de Ação (PDF)](./Relatorio_Plano_De_Acao.pdf)
@@ -49,24 +72,26 @@ Abaixo, os três esqueletos de prompts desenvolvidos para orquestrar a operaçã
 ### 4.2. Glossário GRC Oficial
 Para gerar a tabela do glossário executivo, foi utilizada a função de gerar tabela baseada no seguinte prompt:
 
-> "Atue como um analista regulatório especializado em GRC e Saúde Suplementar e varra a nossa base de dados - Lei 9566/98, RNs 465 (Anexos I e II e inteiro teor), 469 e 566 - e extraia os termos técnicos mais criticos da operação.
-> 
+> Atue como um analista regulatório especializado em GRC e Saúde Suplementar e varra a nossa base de dados - Lei 9566/98, RNs 465 (Anexos I e II e inteiro teor), 469 e 566 - e extraia os termos técnicos mais criticos da operação.
 > A definição do termo não pode ser de dicionário comum; deve ser a exta definição dada pela ANS nos documentos E se a noma não definir os termos claramente, não inclua-o.
-> 
 > Extraia no mínimo 20 termos e retorne em uma tabela no seguinte formato:
-> 
 > Nome do Termo:
-> 
 > Conceito regulatório (a definição exata da ANS)
-> 
 > Fonte (Qual seu embasamento).
-> 
-> Ao final consolide estes conceitos em um glossário executivo regulatório, agrupando as principais regras de carência e limites de cobertura para servir de material de integração rápida para novos analistas e operadores de regulação da nossa equipe. Retornando sua resposta em uma  tabela formatada em Markdown para que ao exportar para o Google Planilhas, mantenha coma formatação corporativa. "
+> Ao final consolide estes conceitos em um glossário executivo regulatório, agrupando as principais regras de carência e limites de cobertura para servir de material de integração rápida para novos analistas e operadores de regulação da nossa equipe. Retornando sua resposta em uma  tabela formatada em Markdown.
 
-*[Espaço reservado para colar o resultado da extração dos 20 termos gerados pelo modelo]* 
+* 📄 [Acessar o Glossário Regulatório (PDF)](./Resultados%20Obtidos/Glossário%20Regulatório.pdf)
+* 📄 [Acessar o Léxico Regulatório (PDF)](./Resultados%20Obtidos/Léxico%20Regulatório.pdf)
 
 ### 4.3. Resumo Estruturado
-*[Espaço reservado para colar o resumo estruturado gerado pelo modelo focado nos impactos operacionais das resoluções]*
+
+> Atue como um analista regulatório sênior focado em organizar as bases de conhecimento de sua equipe e, leia atentamente a Lei 9656 e as RNs mencionadas em nossa base de dados (com seus respectivos anexos) e crie um resumo estruturado para o time.
+> Atenção: não omita exceçãoes às regras principais  e utilize exclusivamente os documentos anexados.
+> Ao final da leitura, retorne um documento, preferencialmete em PDF com o seguintte formato:
+> Objetivo de cada norma: (Em parágrafos diretos)
+> Tópicos críticos: Crie uma lista com bullet points dos 5 pontos de maior impacto operacional
+> Contrua uma tabela relacionado os procedimentos ao prazo máximo em dias
+
+* 📄 [Acessar o Guia de Referência Integrada (Resumo estruturado) (PDF)](./Resultados%20Obtidos/Guia%20de%20Referência%20Integrada%20\(Resumo%20estruturado\).pdf)
 
 *(Nota de Transparência: O relatório completo e o glossário acima foram gerados nativamente pela IA dentro do ambiente do NotebookLM e exportado em formato PDF via Google Docs para preservação da formatação, facilidade de compartilhamento e  consulta direta neste repositório. Ressaltando que apenas o Resumo Estrurutado foi gerado diretamente em PDF pelo Notebook, conforme direcionado pelo prompt).*
-
