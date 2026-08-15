@@ -35,7 +35,7 @@ Durante a construção e calibragem deste "segundo cérebro", algumas rotas prec
 
 > 🛡️ **Nota de Compliance:** Nos testes de caso prático da ferramenta, a informação utilizada foi retirada de uma reclamação pública no portal Reclame Aqui. Visando as práticas de sigilo, o link original não foi incluído e os dados foram anonimizados para não expor a seguradora em questão.
 
-## 4. Miniguia de Estudo e Ferramentas (Entrega Final)
+## 4. Hub Regulatório e Ferramentas (Entrega Final)
 
 ### 4.1. Prompts Reutilizáveis (Motor de Análise)
 Abaixo, os três esqueletos de prompts desenvolvidos para orquestrar a operação da IA:
